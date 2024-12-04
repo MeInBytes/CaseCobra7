@@ -4,12 +4,14 @@ import DesignConfigurator from "./DesignConfigurator";
 import { PrismaClient } from "@prisma/client";
 
 const db = new PrismaClient();
+// interface PageProps {
+//   searchParams: {
+//     [key: string]: string | string[] | undefined;
+//   };
+// }
 interface PageProps {
-  searchParams: {
-    [key: string]: string | string[] | undefined;
-  };
+  searchParams: Record<string, string | string[] | undefined>;
 }
-
 const Page = async ({ searchParams }: PageProps) => {
   const { id } = await searchParams;
 
