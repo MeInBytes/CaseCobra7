@@ -1,7 +1,9 @@
-import { db } from "@/db";
+// import { db } from "@/db";
 import { notFound } from "next/navigation";
 import DesignConfigurator from "./DesignConfigurator";
+import { PrismaClient } from "@prisma/client";
 
+const db = new PrismaClient();
 interface PageProps {
   searchParams: {
     [key: string]: string | string[] | undefined;
