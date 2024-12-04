@@ -9,7 +9,7 @@ interface PageProps {
 }
 
 const Page = async ({ searchParams }: PageProps) => {
-  const { id } = searchParams;
+  const { id } = await searchParams;
 
   if (!id || typeof id !== "string") {
     return notFound();
@@ -35,30 +35,3 @@ const Page = async ({ searchParams }: PageProps) => {
 };
 
 export default Page;
-// Assuming you have the necessary imports
-// import { notFound } from "next/navigation";
-
-// interface PageProps {
-//   searchParams: {
-//     id?: string;
-//   };
-// }
-
-// const Page = async ({ searchParams }: PageProps) => {
-//   // Await the searchParams to access its properties
-//   const { id } = await searchParams;
-
-//   if (!id || typeof id !== "string") {
-//     return notFound();
-//   }
-
-//   // Your component logic here
-//   return (
-//     <div>
-//       <h1>Item ID: {id}</h1>
-//       {/* Other component content */}
-//     </div>
-//   );
-// };
-
-// export default Page;
