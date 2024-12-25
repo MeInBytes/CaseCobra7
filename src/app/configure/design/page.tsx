@@ -43,18 +43,20 @@
 import { db } from "@/db";
 import { notFound } from "next/navigation";
 import DesignConfigurator from "./DesignConfigurator";
-import { PrismaClient } from "@prisma/client";
 
-// Correctly type the page props
-interface PageProps {
+// Updated type definition for searchParams
+export interface PageProps {
   searchParams: {
     id?: string;
   };
 }
 
 const Page = async ({ searchParams }: PageProps) => {
+  // Await the searchParams
+  const params = await searchParams;
+
   // Safely extract the id from searchParams
-  const { id } = searchParams;
+  const id = params.id;
 
   // Validate the id
   if (!id || typeof id !== "string") {
