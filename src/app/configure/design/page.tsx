@@ -40,23 +40,60 @@
 
 // export default Page;
 
+// import { db } from "@/db";
+// import { notFound } from "next/navigation";
+// import DesignConfigurator from "./DesignConfigurator";
+
+// // Updated type definition for searchParams
+// export interface PageProps {
+//   searchParams: {
+//     id?: string;
+//   };
+// }
+
+// const Page = async ({ searchParams }: PageProps) => {
+//   // Await the searchParams
+//   const params = await searchParams;
+
+//   // Safely extract the id from searchParams
+//   const id = params?.id;
+
+//   // Validate the id
+//   if (!id || typeof id !== "string") {
+//     return notFound();
+//   }
+
+//   // Fetch configuration
+//   const configuration = await db.configuration.findUnique({
+//     where: { id },
+//   });
+
+//   // Handle case where configuration is not found
+//   if (!configuration) {
+//     return notFound();
+//   }
+
+//   // Destructure necessary configuration properties
+//   const { imageUrl, width, height } = configuration;
+
+//   // Render the DesignConfigurator with configuration details
+//   return (
+//     <DesignConfigurator
+//       configId={configuration.id}
+//       imageDimensions={{ width, height }}
+//       imageUrl={imageUrl}
+//     />
+//   );
+// };
+
+// export default Page;
 import { db } from "@/db";
 import { notFound } from "next/navigation";
 import DesignConfigurator from "./DesignConfigurator";
 
-// Updated type definition for searchParams
-export interface PageProps {
-  searchParams: {
-    id?: string;
-  };
-}
-
-const Page = async ({ searchParams }: PageProps) => {
-  // Await the searchParams
-  const params = await searchParams;
-
+const Page = async ({ searchParams }: { searchParams: { id?: string } }) => {
   // Safely extract the id from searchParams
-  const id = params.id;
+  const id = searchParams?.id;
 
   // Validate the id
   if (!id || typeof id !== "string") {
